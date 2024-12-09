@@ -3,8 +3,8 @@ const Product = require("../models/product.model.js");
 const createProduct = async (req, res) => {
     try {
         const categories = req.body.categories
-            ? req.body.categories.split(',')
-            : [];
+        ? req.body.categories.split(',').map((cat) => cat.trim())
+        : [];
         const newProduct = new Product({
             ...req.body,
             categories : categories,
